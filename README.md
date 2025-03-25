@@ -1,18 +1,20 @@
-# CCapture.js - A library to capture canvas-based animations
-CCapture.js is a library to help capturing animations created with HTML5 `canvas` at a fixed framerate. 
+# DCapture.js - A library to capture canvas-based animations
+DCapture.js is a library to help capturing animations created with HTML5 `canvas` at a fixed framerate. 
 
-- [What is CCapture.js and why would I need it?](#what-is-ccapturejs-and-why-would-i-need-it)
+DCapture.js is an updated and modernized version of the original [CCapture.js](https://github.com/spite/ccapture.js) library by Jaume Sanchez Elias, where "D" stands for Dmytro.
+
+- [What is DCapture.js and why would I need it?](#what-is-dcapturejs-and-why-would-i-need-it)
 - [Using the code](#using-the-code)
 - [Limitations](#limitations)
 - [Gallery](#gallery)
 - [Credits](#credits)
 - [License](#license)
 
-An example is probably worth a lot of words: [CCapture.js with Game of Life 3D](http://www.clicktorelease.com/code/conway3d_ccapture/).
+An example is probably worth a lot of words: [DCapture.js with Game of Life 3D](http://www.clicktorelease.com/code/conway3d_ccapture/).
 
 ![Sample](https://raw.githubusercontent.com/spite/ccapture.js/master/assets/sample.gif)
 
-#### What is CCapture.js and why would I need it? ####
+#### What is DCapture.js and why would I need it? ####
 
 Let's say that you finally have your amazing **canvas**-based animation running in your browser, be it 2D or 3D with the power of **WebGL**. You've been working hard to keep it fast and smooth. If you're using `requestAnimationFrame` you're aiming for a framerate of 60fps or, in other words, each frame is taking 16ms or less to render.
 
@@ -20,9 +22,9 @@ Now you want to record a video of it. Not a big deal, you can fire up a screen c
 
 What if, indeed. What would happen is that you'd get a choppy video at best. At higher resolutions, fillrate is a bottleneck for most **canvas**-based animations. High quality settings or high number of elements may be only feasible on more powerful hardware.
 
-With CCapture.js you can record smooth videos at a fixed framerate for all these situations, because it doesn't run in realtime: it makes the animations run at a given, fixed framerate which can be specified. You can record animations at smooth and consistent 30 or 60fps even if each frame takes seconds to render. You can even take a 240fps capture and create motion blur with post-production software.
+With DCapture.js you can record smooth videos at a fixed framerate for all these situations, because it doesn't run in realtime: it makes the animations run at a given, fixed framerate which can be specified. You can record animations at smooth and consistent 30 or 60fps even if each frame takes seconds to render. You can even take a 240fps capture and create motion blur with post-production software.
 
-The only requirement is that you step your values per frame according to elapsed time. In other words, don't increment your variables with a fixed value each frame, but use an elapsed time delta to adjust those increments. CCapture.js works by hooking the common methods for obtaining that elapsed time: `Date.now()`, `setTimeout`, `requestAnimationFrame`, etc. and making them behave like a constant time step is happening, fixed by the specified framerate.
+The only requirement is that you step your values per frame according to elapsed time. In other words, don't increment your variables with a fixed value each frame, but use an elapsed time delta to adjust those increments. DCapture.js works by hooking the common methods for obtaining that elapsed time: `Date.now()`, `setTimeout`, `requestAnimationFrame`, etc. and making them behave like a constant time step is happening, fixed by the specified framerate.
 
 Methods supported so far:
 
@@ -32,23 +34,23 @@ Methods supported so far:
 - `performance.now`
 - `HTMLVideoElement.prototype.currentTime`, `HTMLAudioElement.prototype.currentTime`
 
-CCapture.js is more or less [ryg's kkapture](http://www.farb-rausch.de/~fg/kkapture/) but for JavaScript and `canvas`. 
+DCapture.js is more or less [ryg's kkapture](http://www.farb-rausch.de/~fg/kkapture/) but for JavaScript and `canvas`. It is an updated version of the original [CCapture.js](https://github.com/spite/ccapture.js).
 
-The library supports multiple export formats using modular encoders (`CCFrameEncoder):
+The library supports multiple export formats using modular encoders (`DCFrameEncoder`):
 
-- `CCWebMEncoder` uses [WebM Writer for JavaScript](https://github.com/thenickdude/webm-writer-js/) to create a WebM movie
-- `CCPNGEncoder` and `CCJPEGEncoder` export PNG and JPEG files in a TAR file, respectively
-- `CCGIFEncoder` uses [gifjs](http://jnordberg.github.io/gif.js/) to create animated GIFs
-- `CCFFMpegServerEncoder` uses [ffmpegserver.js](https://github.com/greggman/ffmpegserver.js) to generate video on the server 
+- `DCWebMEncoder` uses [WebM Writer for JavaScript](https://github.com/thenickdude/webm-writer-js/) to create a WebM movie
+- `DCPNGEncoder` and `DCJPEGEncoder` export PNG and JPEG files in a TAR file, respectively
+- `DCGIFEncoder` uses [gifjs](http://jnordberg.github.io/gif.js/) to create animated GIFs
+- `DCFFMpegServerEncoder` uses [ffmpegserver.js](https://github.com/greggman/ffmpegserver.js) to generate video on the server 
 
 Forks, pull requests and code critiques are welcome!
 
 #### Using the code ####
 
-Include CCapture[.min].js and [WebM Writer](https://github.com/thenickdude/webm-writer-js) or [gifjs](http://jnordberg.github.io/gif.js/). 
+Include DCapture[.min].js and [WebM Writer](https://github.com/thenickdude/webm-writer-js) or [gifjs](http://jnordberg.github.io/gif.js/). 
 
 ```html
-<script src="CCapture.min.js"></script>
+<script src="DCapture.min.js"></script>
 <!-- Include WebM Writer if you want to export WebM -->
 <script src="webm-writer-0.2.0.js"></script>
 <!-- Include gifjs if you want to export GIF -->
@@ -60,38 +62,38 @@ Include CCapture[.min].js and [WebM Writer](https://github.com/thenickdude/webm-
 ```
 Or include the whole pack
 ```html
-<script src="CCapture.all.min.js"></script>
+<script src="DCapture.all.min.js"></script>
 ```
-Or use npm or bower to install the [package](https://www.npmjs.com/package/ccapture.js):
+Or use npm or bower to install the [package](https://www.npmjs.com/package/dcapture.js):
 ```bash
-npm install ccapture.js
+npm install dcapture.js
 ```
-Or use bower to install the [package](https://www.npmjs.com/package/ccapture.js):
+Or use bower to install the [package](https://www.npmjs.com/package/dcapture.js):
 ```bash
-bower install ccapture.js
+bower install dcapture.js
 ```
 
-To create a CCapture object, write:
+To create a DCapture object, write:
 
 ```js
 // Create a capturer that exports a WebM video
-var capturer = new CCapture( { format: 'webm' } );
+var capturer = new DCapture( { format: 'webm' } );
 
 // Create a capturer that exports an animated GIF
 // Notices you have to specify the path to the gif.worker.js 
-var capturer = new CCapture( { format: 'gif', workersPath: 'js/' } );
+var capturer = new DCapture( { format: 'gif', workersPath: 'js/' } );
 
 // Create a capturer that exports PNG images in a TAR file
-var capturer = new CCapture( { format: 'png' } );
+var capturer = new DCapture( { format: 'png' } );
 
 // Create a capturer that exports JPEG images in a TAR file
-var capturer = new CCapture( { format: 'jpg' } );
+var capturer = new DCapture( { format: 'jpg' } );
 ```
 
-This creates a CCapture object to run at 60fps, non-verbose. You can tweak the object by setting parameters on the constructor:
+This creates a DCapture object to run at 60fps, non-verbose. You can tweak the object by setting parameters on the constructor:
 
 ```js
-var capturer = new CCapture( {
+var capturer = new DCapture( {
 	framerate: 60,
 	verbose: true
 } );
@@ -147,7 +149,7 @@ capturer.save( function( blob ) { /* ... */ } );
 
 #### Limitations ####
 
-CCapture.js only works on browsers that have a `canvas implementation.
+DCapture.js only works on browsers that have a `canvas implementation.
 
 **WebM Writer** current version only works on a browser that supports the image/webp format. Exporting video is basically Chrome-only for now :( If you want to help to make it Firefox, Opera or even Internet Explorer compatible, please do!
 
@@ -161,7 +163,7 @@ Use an `autoSaveTime` value that give you a file that is small enough to not tri
 
 **Memory allocation and garbage collection**
 
-There's some issues in which memory -mostly from accumulated frames- will not be freed, depending on the platform and the mood of the browser. If you run into non-sawtooth like memory profiles, and are running chrome, try running it with ```--js-flags="--expose-gc"```. This way CCapture will run ```gc()``` every frame and memory consumption should stay stable.
+There's some issues in which memory -mostly from accumulated frames- will not be freed, depending on the platform and the mood of the browser. If you run into non-sawtooth like memory profiles, and are running chrome, try running it with ```--js-flags="--expose-gc"```. This way DCapture will run ```gc()``` every frame and memory consumption should stay stable.
 
 #### Gallery ####
 
@@ -171,6 +173,7 @@ There's some issues in which memory -mostly from accumulated frames- will not be
 
 #### Credits ####
 
+- Based on the original [CCapture.js](https://github.com/spite/ccapture.js) by Jaume Sanchez Elias
 - [WebM Writer](https://github.com/thenickdude/webm-writer-js) 
 - Pre 1.0.9: Slightly modified version of [Whammy.js](https://github.com/antimatter15/whammy) (fixed variable size
    integer calculations)

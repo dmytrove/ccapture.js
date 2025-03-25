@@ -1,4 +1,34 @@
-examples
-assets
-extension
-utils
+# Development files
+examples/
+assets/
+utils/
+.vscode/
+.github/
+.git/
+src/
+rollup.config.js
+.eslintrc.json
+.prettierrc
+.babelrc
+.gitignore
+.npmignore
+.editorconfig
+jest.config.js
+tsconfig.json
+coverage/
+
+# Tests
+test/
+__tests__/
+
+# Docs
+docs/
+*.md
+!README.md
+
+# Misc
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.test
